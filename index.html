@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Md. Arshad Khan — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0a0a0a;
+      --paper: #f5f2ee;
+      --accent: #c8a96e;
+      --mid: #6b6458;
+      --rule: rgba(10,10,10,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'DM Mono', monospace;
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: crosshair;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 3rem;
+      mix-blend-mode: multiply;
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.18em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 4rem 4rem 5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-issue {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-issue::before {
+      content: '';
+      display: block;
+      width: 2.5rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 9vw, 10rem);
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+
+    .hero-name span {
+      display: block;
+      color: var(--accent);
+    }
+
+    .hero-tagline {
+      margin-top: 2.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      color: var(--mid);
+      line-height: 1.5;
+      max-width: 26rem;
+    }
+
+    .hero-meta {
+      margin-top: 3rem;
+      display: flex;
+      gap: 3rem;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .hero-meta-label {
+      font-size: 0.55rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .hero-meta-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .hero-img-panel {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-img-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      filter: grayscale(20%) contrast(1.05);
+      transform: scale(1.03);
+      transition: transform 8s ease;
+    }
+
+    .hero-img-panel:hover img { transform: scale(1); }
+
+    .hero-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--paper) 0%, transparent 30%);
+    }
+
+    .hero-scroll-cue {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.58rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--mid);
+      z-index: 2;
+    }
+
+    .hero-scroll-cue .line {
+      width: 3rem;
+      height: 1px;
+      background: var(--accent);
+      animation: expandLine 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes expandLine {
+      from { width: 1.5rem; }
+      to { width: 4rem; }
+    }
+
+    /* ── SECTION SHELL ── */
+    section {
+      padding: 7rem 5rem;
+      position: relative;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+    }
+
+    .section-num {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--accent);
+      margin-top: 0.4rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 7vw, 7rem);
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+
+    hr.rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 0 0 5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    #about .section-title { color: var(--paper); }
+    #about .section-num { color: var(--accent); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-photo {
+      position: relative;
+    }
+
+    .about-photo img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      filter: grayscale(30%);
+    }
+
+    .about-photo::before {
+      content: '';
+      position: absolute;
+      top: -1rem;
+      left: -1rem;
+      right: 1rem;
+      bottom: 1rem;
+      border: 1px solid var(--accent);
+      z-index: 0;
+    }
+
+    .about-photo img { position: relative; z-index: 1; }
+
+    .about-body {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .about-pull {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-style: italic;
+      line-height: 1.3;
+      color: var(--accent);
+    }
+
+    .about-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      line-height: 2;
+      color: rgba(245,242,238,0.7);
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(245,242,238,0.15);
+      margin-top: 1rem;
+    }
+
+    .stat-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,242,238,0.5);
+      margin-top: 0.4rem;
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--paper); }
+
+    .exp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .exp-column {}
+
+    .exp-column-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .exp-item {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .exp-item:last-child { border-bottom: none; }
+
+    .exp-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 0.55rem;
+      flex-shrink: 0;
+    }
+
+    .exp-content {}
+
+    .exp-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .exp-desc {
+      font-size: 0.7rem;
+      line-height: 1.8;
+      color: var(--mid);
+    }
+
+    .exp-photo {
+      margin-top: 3rem;
+    }
+
+    .exp-photo img {
+      width: 100%;
+      object-fit: cover;
+      max-height: 280px;
+      filter: grayscale(20%);
+    }
+
+    /* ── SKILLS ── */
+    #skills {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    #skills .section-title { color: var(--paper); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+
+    .skill-group {}
+
+    .skill-group-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .skill-group-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(200,169,110,0.3);
+    }
+
+    .skill-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(245,242,238,0.08);
+    }
+
+    .skill-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+    }
+
+    .skill-level {
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .skill-bar-wrap {
+      margin-top: 1rem;
+      height: 2px;
+      background: rgba(245,242,238,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .skill-bar {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      transform-origin: left;
+      animation: growBar 1.4s ease forwards;
+    }
+
+    @keyframes growBar {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    /* ── CERTIFICATIONS ── */
+    #certifications { background: var(--paper); }
+
+    .cert-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+
+    .cert-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .cert-card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      filter: grayscale(40%) contrast(0.95);
+      transition: filter 0.4s ease, transform 0.6s ease;
+    }
+
+    .cert-card:hover img {
+      filter: grayscale(0%) contrast(1.05);
+      transform: scale(1.03);
+    }
+
+    .cert-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 55%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+    }
+
+    .cert-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--paper);
+      font-style: italic;
+    }
+
+    .cert-year {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 0.3rem;
+    }
+
+    /* ── PHILOSOPHY ── */
+    #philosophy {
+      min-height: 80vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .philosophy-img {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .philosophy-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(30%) contrast(1.1);
+    }
+
+    .philosophy-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 70%, var(--ink));
+    }
+
+    .philosophy-text {
+      background: var(--ink);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 5rem;
+    }
+
+    .philosophy-quote {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 6vw, 6.5rem);
+      line-height: 1;
+      color: var(--paper);
+    }
+
+    .philosophy-quote em {
+      color: var(--accent);
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+    }
+
+    .philosophy-sub {
+      margin-top: 2rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      line-height: 1.9;
+      color: rgba(245,242,238,0.5);
+      max-width: 28rem;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--paper);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      padding: 0;
+      min-height: 60vh;
+    }
+
+    .contact-left {
+      padding: 7rem 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 7vw, 8rem);
+      line-height: 0.95;
+      margin-bottom: 3rem;
+    }
+
+    .contact-item {
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-item-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-item-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .contact-item-value a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-item-value a:hover { color: var(--accent); }
+
+    .contact-right {
+      position: relative;
+      overflow: hidden;
+      background: var(--ink);
+    }
+
+    .contact-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.4;
+      mix-blend-mode: luminosity;
+    }
+
+    .contact-right-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem;
+    }
+
+    .contact-tagline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--paper);
+      letter-spacing: 0.15em;
+      text-align: center;
+    }
+
+    .contact-university {
+      margin-top: 1rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(245,242,238,0.4);
+      padding: 2rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ── REVEAL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(2rem);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 5rem 1.8rem; }
+      #hero, .about-grid, .exp-grid, #philosophy, #contact {
+        grid-template-columns: 1fr;
+      }
+      #hero { min-height: auto; }
+      .hero-text { padding: 7rem 1.8rem 3rem; }
+      .hero-img-panel { height: 50vw; }
+      .hero-scroll-cue { left: 1.8rem; }
+      .skills-grid, .cert-row { grid-template-columns: 1fr; }
+      .philosophy-img { height: 55vw; }
+      .philosophy-text { padding: 4rem 1.8rem; }
+      .contact-left { padding: 5rem 1.8rem; }
+      .contact-right { height: 50vw; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#hero">MAK</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certifications">Certs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-text">
+      <div class="hero-issue">ECE Engineer · Warangal, India</div>
+      <h1 class="hero-name">
+        MD.<br>ARSHAD<br><span>KHAN</span>
+      </h1>
+      <p class="hero-tagline">An innovator and imaginative — engineering circuits by day, weaving stories by night.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">University</span>
+          <span class="hero-meta-value">SR University</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Major</span>
+          <span class="hero-meta-value">ECE · 2027</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">CGPA</span>
+          <span class="hero-meta-value">8.5</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-img-panel">
+      <img src="images/1.png" alt="Md. Arshad Khan" />
+      <div class="hero-img-overlay"></div>
+    </div>
+    <div class="hero-scroll-cue">
+      <span class="line"></span>
+      scroll to explore
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">A LITTLE ABOUT ME</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-photo reveal">
+        <img src="images/2.png" alt="Arshad in lab" />
+      </div>
+      <div class="about-body">
+        <p class="about-pull reveal reveal-delay-1">"Built to engineer. Born to imagine."</p>
+        <p class="about-text reveal reveal-delay-2">
+          Currently a third-year Electronics and Communication Engineering student at SR University, Warangal. I build real projects — from IoT surveillance systems to wearable prototypes — and I participate in workshops, seminars, and engineering clubs to stay at the frontier.<br><br>
+          Beyond circuits, I have been working on my writing since 2023 — short stories, scripts, blogs — because creativity doesn't stop at the lab bench. Passionate about VLSI design, IoT, product engineering, and the stories that technology makes possible.
+        </p>
+        <div class="about-stats reveal reveal-delay-3">
+          <div>
+            <div class="stat-val">3+</div>
+            <div class="stat-label">Years Writing</div>
+          </div>
+          <div>
+            <div class="stat-val">5+</div>
+            <div class="stat-label">Projects Built</div>
+          </div>
+          <div>
+            <div class="stat-val">8.5</div>
+            <div class="stat-label">CGPA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">EXPERIENCE</h2>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-column reveal">
+        <div class="exp-column-title">Literacy &amp; Creative Writing</div>
+        <div class="exp-item">
+          <div class="exp-dot"></div>
+          <div class="exp-content">
+            <div class="exp-title">Writing Contests</div>
+            <div class="exp-desc">Participating in university and open writing competitions since 2023 — short stories, essays, and creative pieces across multiple genres.</div>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-dot"></div>
+          <div class="exp-content">
+            <div class="exp-title">Blogs &amp; Articles</div>
+            <div class="exp-desc">Authored multiple blog posts on technology, engineering concepts, and creative subjects — building an online writing presence.</div>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-dot"></div>
+          <div class="exp-content">
+            <div class="exp-title">Earned Certifications</div>
+            <div class="exp-desc">Recognised for writing excellence through university-level certifications including the LMCC Visual Chronicles Contest.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-column reveal reveal-delay-1">
+        <div class="exp-column-title">Projects, Workshops &amp; Seminars</div>
+        <div class="exp-item">
+          <div class="exp-dot"></div>
+          <div class="exp-content">
+            <div class="exp-title">DRDO Seminar — 2025</div>
+            <div class="exp-desc">Certificate of Participation in the DRDO-Sponsored National Level Seminar on Semiconductor Devices &amp; Sensors, SR University ECE Department.</div>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-dot"></div>
+          <div class="exp-content">
+            <div class="exp-title">Project Excellence — 2023</div>
+            <div class="exp-desc">Certificate of Excellence for "Orthofoots" — a wearable foot massager prototype built on electronics and healthcare principles. Best Project Award at ProjectExpo'23 Season-1.</div>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-dot"></div>
+          <div class="exp-content">
+            <div class="exp-title">IoT Club Activities</div>
+            <div class="exp-desc">Conducted IoT awareness and hands-on activities for junior batches — presenting on The Importance of IoT and guiding lab sessions.</div>
+          </div>
+        </div>
+        <div class="exp-photo">
+          <img src="images/3.png" alt="Conducting IoT seminar" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">SKILLS &amp; EXPERTISE</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-group reveal">
+        <div class="skill-group-label">Core Engineering</div>
+        <div class="skill-item">
+          <span class="skill-name">C-MOS Fabrication</span>
+          <span class="skill-level">Advanced</span>
+        </div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div>
+        <div class="skill-item">
+          <span class="skill-name">Digital Electronics</span>
+          <span class="skill-level">Advanced</span>
+        </div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
+        <div class="skill-item">
+          <span class="skill-name">Product Designing</span>
+          <span class="skill-level">Intermediate</span>
+        </div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div>
+        <div class="skill-item">
+          <span class="skill-name">Internet of Things</span>
+          <span class="skill-level">Intermediate</span>
+        </div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div>
+      </div>
+
+      <div class="skill-group reveal reveal-delay-1">
+        <div class="skill-group-label">Coding</div>
+        <div class="skill-item">
+          <span class="skill-name">Python</span>
+          <span class="skill-level">Intermediate</span>
+        </div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div>
+        <div class="skill-item">
+          <span class="skill-name">MATLAB</span>
+          <span class="skill-level">Intermediate</span>
+        </div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:60%"></div></div>
+        <div class="skill-item">
+          <span class="skill-name">C Language</span>
+          <span class="skill-level">Beginner</span>
+        </div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:35%"></div></div>
+        <div class="skill-item">
+          <span class="skill-name">Embedded C / Arduino</span>
+          <span class="skill-level">Intermediate</span>
+        </div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:60%"></div></div>
+      </div>
+
+      <div class="skill-group reveal reveal-delay-2">
+        <div class="skill-group-label">Writing &amp; Creative</div>
+        <div class="skill-item">
+          <span class="skill-name">Creative Writing</span>
+          <span class="skill-level">Advanced</span>
+        </div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div>
+        <div class="skill-item">
+          <span class="skill-name">Short Story</span>
+          <span class="skill-level">Advanced</span>
+        </div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:78%"></div></div>
+        <div class="skill-item">
+          <span class="skill-name">Script Writing</span>
+          <span class="skill-level">Intermediate</span>
+        </div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div>
+        <div class="skill-item">
+          <span class="skill-name">Blogs &amp; Articles</span>
+          <span class="skill-level">Intermediate</span>
+        </div>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">CERTIFICATIONS</h2>
+    </div>
+    <div class="cert-row">
+      <div class="cert-card reveal">
+        <img src="images/5.png" alt="Certifications" style="object-position: 15% center;" />
+        <div class="cert-card-overlay">
+          <div class="cert-label">Creative Writing</div>
+          <div class="cert-year">LMCC · SR University</div>
+        </div>
+      </div>
+      <div class="cert-card reveal reveal-delay-1">
+        <img src="images/5.png" alt="DRDO Seminar Certificate" style="object-position: 50% center;" />
+        <div class="cert-card-overlay">
+          <div class="cert-label">DRDO Seminar Participation</div>
+          <div class="cert-year">National Level · 2025</div>
+        </div>
+      </div>
+      <div class="cert-card reveal reveal-delay-2">
+        <img src="images/5.png" alt="Project Excellence Certificate" style="object-position: 85% center;" />
+        <div class="cert-card-overlay">
+          <div class="cert-label">Project Excellence — Orthofoots</div>
+          <div class="cert-year">ProjectExpo'23 · Best Award</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section id="philosophy">
+    <div class="philosophy-img">
+      <img src="images/6.png" alt="I was created to create" />
+    </div>
+    <div class="philosophy-text">
+      <p class="philosophy-quote reveal">
+        I WAS <em>CREATED</em> TO CREATE
+      </p>
+      <p class="philosophy-sub reveal reveal-delay-1">
+        Engineering is just another form of storytelling — every circuit has a narrative, every prototype a character. I move between the precision of electronics and the freedom of words, searching for the place where both become something real.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-left">
+      <div class="section-header" style="margin-bottom: 2.5rem;">
+        <span class="section-num">05</span>
+        <h2 class="contact-title">GET IN TOUCH</h2>
+      </div>
+      <div class="contact-item reveal">
+        <div class="contact-item-label">Email</div>
+        <div class="contact-item-value">
+          <a href="mailto:arshad5914khan@gmail.com">arshad5914khan@gmail.com</a>
+        </div>
+      </div>
+      <div class="contact-item reveal reveal-delay-1">
+        <div class="contact-item-label">Phone</div>
+        <div class="contact-item-value">
+          <a href="tel:+917095268662">+91 7095268662</a>
+        </div>
+      </div>
+      <div class="contact-item reveal reveal-delay-2">
+        <div class="contact-item-label">Location</div>
+        <div class="contact-item-value">Warangal, Telangana, India</div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <img src="images/7.png" alt="Orthofoots sketch" />
+      <div class="contact-right-overlay">
+        <div class="contact-tagline">TRYING TO DO BETTER</div>
+        <div class="contact-university">SR University · ECE · Batch of 2027</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2025 Md. Arshad Khan</span>
+    <span>An Innovator &amp; Imaginative</span>
+    <span><a href="mailto:arshad5914khan@gmail.com">arshad5914khan@gmail.com</a></span>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Parallax hero image subtle
+    const heroImg = document.querySelector('.hero-img-panel img');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      if (heroImg && scrolled < window.innerHeight) {
+        heroImg.style.transform = `scale(1.03) translateY(${scrolled * 0.12}px)`;
+      }
+    });
+  </script>
+</body>
+</html>

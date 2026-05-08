@@ -3,7 +3,7 @@
 
 Personal portfolio website built with HTML, CSS, and JavaScript.
 
-🌐 **Live Site:** [yourusername.github.io/portfolio](https://arshad5914khan-sketchy.github.io/portfolio/)
+🌐 **Live Site:** [https://arshad5914khan-sketchy.github.io/portfolio/](https://arshad5914khan-sketchy.github.io/portfolio/)
 
 ---
 
